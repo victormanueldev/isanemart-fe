@@ -15,5 +15,6 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react-refresh/only-export-components': 'warn',
     quotes: [0, 'single', { avoidEscape: true }],
+    'react/prop-types': [0],
   },
 };
