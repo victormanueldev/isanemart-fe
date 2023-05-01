@@ -3,7 +3,9 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
+import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import { AdminLayout } from '../../layouts';
+import { Accordion, AccordionGroup } from '../../components';
 import { useCalendar } from '../../hooks';
 
 let todayStr = new Date().toISOString().replace(/T.*$/, '');
@@ -34,8 +36,58 @@ export const CalendarPage = () => {
           Gestiona los servicios pentientes, agendados en un calendario interactivo.
         </p>
       </header>
-      <div className="flex xs:flex-col md:flex-row">
-        <div className="flex-auto bg-green-300">1</div>
+      <div className="flex xs:flex-col lg:flex-row py-2">
+        <div className="flex-1 lg:mr-3">
+          <AccordionGroup>
+            <Accordion title="Técnicos" active={true} index={1}>
+              <p className="text-md text-gray-500 mb-2">Filtra servicios por técnico</p>
+              <div className="flex xs:flex-row lg:flex-col gap-x-5 gap-y-3">
+                <div className="flex">
+                  <input
+                    type="checkbox"
+                    className="shrink-0 mt-0.5 border-gray-200 rounded text-indigo-600 focus:ring-indigo-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-indigo-500 dark:checked:border-indigo-500 dark:focus:ring-offset-gray-800"
+                    id="hs-checkbox-group-1"
+                  ></input>
+                  <label
+                    htmlFor="hs-checkbox-group-1"
+                    className="text-sm text-gray-700 ml-3 dark:text-gray-400"
+                  >
+                    Captain Jack Sparrow
+                  </label>
+                </div>
+                <div className="flex">
+                  <input
+                    type="checkbox"
+                    className="shrink-0 mt-0.5 border-gray-200 rounded text-red-600 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-red-500 dark:checked:border-red-500 dark:focus:ring-offset-gray-800"
+                    id="hs-checkbox-group-1"
+                  ></input>
+                  <label
+                    htmlFor="hs-checkbox-group-1"
+                    className="text-sm text-gray-700 ml-3 dark:text-gray-400"
+                  >
+                    John Snow
+                  </label>
+                </div>
+              </div>
+            </Accordion>
+            <Accordion title="Servicios" active={false} index={0}>
+              <p className="text-md text-gray-500 mb-2">
+                Servicios pendientes por asignación de horario y técnico
+              </p>
+              <div className="flex flex-row">
+                <div className="flex flex-row gap-x-3 bg-white border shadow-sm rounded-lg md:p-2 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] dark:text-gray-400">
+                  <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-gray-600">
+                    <span className="text-xs font-medium text-white leading-none">AC</span>
+                  </span>
+                  <div className="flex flex-col">
+                    <p className="text-sm text-gray-900">Hotel AC by Marriot</p>
+                    <p className="text-sm text-gray-500">Av 5 # 35 F Sur - 126</p>
+                  </div>
+                </div>
+              </div>
+            </Accordion>
+          </AccordionGroup>
+        </div>
         <div className="flex-auto lg:basis-1/3">
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
@@ -45,7 +97,7 @@ export const CalendarPage = () => {
               center: 'title',
               right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth',
             }}
-            weekends={true}
+            weekends={false}
             events={events}
             editable={true}
             selectable={true}
