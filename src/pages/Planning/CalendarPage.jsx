@@ -3,7 +3,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
-import { CheckCircleIcon } from '@heroicons/react/24/solid';
+import { Bars2Icon } from '@heroicons/react/24/solid';
 import { AdminLayout } from '../../layouts';
 import { Accordion, AccordionGroup } from '../../components';
 import { useCalendar } from '../../hooks';
@@ -74,14 +74,41 @@ export const CalendarPage = () => {
               <p className="text-md text-gray-500 mb-2">
                 Servicios pendientes por asignación de horario y técnico
               </p>
-              <div className="flex flex-row">
-                <div className="flex flex-row gap-x-3 bg-white border shadow-sm rounded-lg md:p-2 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] dark:text-gray-400">
-                  <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-gray-600">
+              <div className="flex flex-col gap-y-3">
+                <div className="cursor-grabbing flex flex-row bg-white border shadow-sm rounded-lg xs:p-3 md:p-2 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] dark:text-gray-400 w-full justify-between items-center">
+                  <span className="inline-flex items-center justify-center h-9 w-9 rounded-full bg-gray-600">
                     <span className="text-xs font-medium text-white leading-none">AC</span>
                   </span>
-                  <div className="flex flex-col">
+                  <div className="basis-56 flex-col items-start ">
                     <p className="text-sm text-gray-900">Hotel AC by Marriot</p>
                     <p className="text-sm text-gray-500">Av 5 # 35 F Sur - 126</p>
+                  </div>
+                  <div className="basis-1/7">
+                    <Bars2Icon className="w-5 h-5"></Bars2Icon>
+                  </div>
+                </div>
+                <div className="cursor-grabbing flex flex-row bg-white border shadow-sm rounded-lg xs:p-3 md:p-2 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] dark:text-gray-400 w-full justify-between items-center">
+                  <span className="inline-flex items-center justify-center h-9 w-9 rounded-full bg-gray-600">
+                    <span className="text-xs font-medium text-white leading-none">AC</span>
+                  </span>
+                  <div className="basis-56 flex-col items-start ">
+                    <p className="text-sm text-gray-900">Hotel AC by Marriot</p>
+                    <p className="text-sm text-gray-500">Av 5 # 35 F Sur - 126</p>
+                  </div>
+                  <div className="basis-1/7">
+                    <Bars2Icon className="w-5 h-5"></Bars2Icon>
+                  </div>
+                </div>
+                <div className="cursor-grabbing flex flex-row bg-white border shadow-sm rounded-lg xs:p-3 md:p-2 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] dark:text-gray-400 w-full justify-between items-center">
+                  <span className="inline-flex items-center justify-center h-9 w-9 rounded-full bg-gray-600">
+                    <span className="text-xs font-medium text-white leading-none">AC</span>
+                  </span>
+                  <div className="basis-56 flex-col items-start ">
+                    <p className="text-sm text-gray-900">Hotel AC by Marriot</p>
+                    <p className="text-sm text-gray-500">Av 5 # 35 F Sur - 126</p>
+                  </div>
+                  <div className="basis-1/7">
+                    <Bars2Icon className="w-5 h-5"></Bars2Icon>
                   </div>
                 </div>
               </div>
