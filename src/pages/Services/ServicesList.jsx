@@ -5,7 +5,7 @@ export const ServicesList = () => {
     <AdminLayout>
       <header>
         <h1 className="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">
-          Services
+          Servicios
         </h1>
         <p className="mt-2 text-md text-gray-800 dark:text-gray-400">
           Visualiza todos los servicios de todos los clientes y sus estados actuales, usa los

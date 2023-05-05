@@ -39,7 +39,12 @@ export const CalendarPage = () => {
       <div className="flex xs:flex-col lg:flex-row py-2">
         <div className="flex-1 lg:mr-3">
           <AccordionGroup>
-            <Accordion title="Técnicos" active={true} index={1}>
+            <Accordion
+              title="Técnicos"
+              active={true}
+              index={1}
+              style="hs-accordion bg-white border -mt-px first:rounded-t-lg last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700"
+            >
               <p className="text-md text-gray-500 mb-2">Filtra servicios por técnico</p>
               <div className="flex xs:flex-row lg:flex-col gap-x-5 gap-y-3">
                 <div className="flex">
@@ -70,7 +75,12 @@ export const CalendarPage = () => {
                 </div>
               </div>
             </Accordion>
-            <Accordion title="Servicios" active={false} index={0}>
+            <Accordion
+              title="Servicios"
+              active={false}
+              index={0}
+              style="hs-accordion bg-white border -mt-px first:rounded-t-lg last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700"
+            >
               <p className="text-md text-gray-500 mb-2">
                 Servicios pendientes por asignación de horario y técnico
               </p>
