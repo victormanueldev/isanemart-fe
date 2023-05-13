@@ -1,14 +1,20 @@
 import { useForm } from 'react-hook-form';
 import { ArrowRightIcon, ExclamationCircleIcon } from '@heroicons/react/24/solid';
 import { AuthLayout } from '../../layouts';
+import { LoaderButton } from '../../components';
+import { useState } from 'react';
 
 export const LoginPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    setIsLoading(!isLoading);
+    console.log(data);
+  };
   return (
     <AuthLayout>
       <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">Iniciar Sesión</h1>
@@ -94,8 +100,14 @@ export const LoginPage = () => {
             type="submit"
             className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800 disabled:pointer-events-none"
           >
-            Iniciar Sesión
-            <ArrowRightIcon className="h-4 w-4" />
+            {!isLoading ? (
+              <>
+                Iniciar Sesión
+                <ArrowRightIcon className="h-4 w-4" />
+              </>
+            ) : (
+              <LoaderButton></LoaderButton>
+            )}
           </button>
         </div>
       </form>

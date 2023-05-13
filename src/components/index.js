@@ -5,3 +5,4 @@ export * from './accordion/Accordion';
 export * from './accordion/AccordionGroup';
 export * from './accordion/AccordionTitle';
 export * from './card/Card';
+export * from './buttons/LoaderButton';
