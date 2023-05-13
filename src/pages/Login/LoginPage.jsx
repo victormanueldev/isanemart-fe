@@ -1,14 +1,20 @@
 import { useForm } from 'react-hook-form';
 import { ArrowRightIcon, ExclamationCircleIcon } from '@heroicons/react/24/solid';
 import { AuthLayout } from '../../layouts';
+import { useDispatch, useSelector } from 'react-redux';
+import { startLogin } from '../../state';
 
 export const LoginPage = () => {
+  const { status, error } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    dispatch(startLogin(data));
+  };
   return (
     <AuthLayout>
       <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">Iniciar Sesión</h1>
