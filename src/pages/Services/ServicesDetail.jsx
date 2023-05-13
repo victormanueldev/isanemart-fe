@@ -1,6 +1,10 @@
 import { AdminLayout } from '../../layouts';
 import { Card } from '../../components';
-import { ServiceDetailClientInfo } from '../../views';
+import {
+  ServiceDetailClientInfo,
+  ServicesDetailHeadquarters,
+  ServicesDetailAreas,
+} from '../../views';
 export const ServicesDetail = () => {
   return (
     <AdminLayout>
@@ -23,9 +27,12 @@ export const ServicesDetail = () => {
           </button>
         </div>
       </header>
-      <div className="py-3 flex flex-col grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-x-5">
+      <div className="py-3 grid grid-cols-1 gap-5 md:grid-cols-3 md:grid-rows-2 md:grid-flow-col md:gap-x-5">
         <ServiceDetailClientInfo></ServiceDetailClientInfo>
-        <Card></Card>
+        <ServicesDetailHeadquarters></ServicesDetailHeadquarters>
+        <ServicesDetailAreas></ServicesDetailAreas>
+        <ServicesDetailHeadquarters></ServicesDetailHeadquarters>
+        <ServicesDetailAreas></ServicesDetailAreas>
       </div>
     </AdminLayout>
   );

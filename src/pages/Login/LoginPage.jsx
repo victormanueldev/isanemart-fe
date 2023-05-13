@@ -1,19 +1,21 @@
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { startLogin } from '../../state';
 import { ArrowRightIcon, ExclamationCircleIcon } from '@heroicons/react/24/solid';
 import { AuthLayout } from '../../layouts';
 import { LoaderButton } from '../../components';
-import { useState } from 'react';
 
 export const LoginPage = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const { status, error } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    setIsLoading(!isLoading);
-    console.log(data);
+    dispatch(startLogin(data));
   };
   return (
     <AuthLayout>
