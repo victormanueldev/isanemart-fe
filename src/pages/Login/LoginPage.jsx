@@ -1,12 +1,12 @@
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { startLogin } from '../../state';
 import { ArrowRightIcon, ExclamationCircleIcon } from '@heroicons/react/24/solid';
 import { AuthLayout } from '../../layouts';
-import { LoaderButton } from '../../components';
+import { LoaderButton, Toast } from '../../components';
 
 export const LoginPage = () => {
+  console.log('rendered');
   const { status, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const {
@@ -19,6 +19,7 @@ export const LoginPage = () => {
   };
   return (
     <AuthLayout>
+      {!error ?? <Toast></Toast>}
       <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">Iniciar Sesión</h1>
       <form className="mt-8" onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-y-7">
@@ -102,7 +103,7 @@ export const LoginPage = () => {
             type="submit"
             className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800 disabled:pointer-events-none"
           >
-            {!isLoading ? (
+            {!status == 'checking' ? (
               <>
                 Iniciar Sesión
                 <ArrowRightIcon className="h-4 w-4" />

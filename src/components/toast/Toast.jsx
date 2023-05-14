@@ -4,7 +4,7 @@ export const Toast = ({ message }) => {
     <div className="absolute md:top-30 md:right-4">
       <div
         id="dismiss-toast"
-        className={`bg-green-500 hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 max-w-md text-sm text-white rounded-md shadow-lg`}
+        className={`bg-red-500 hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 max-w-md text-sm text-white rounded-md shadow-lg`}
         role="alert"
       >
         <div className="flex items-center p-3">

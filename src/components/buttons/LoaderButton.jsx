@@ -1,7 +1,7 @@
 export const LoaderButton = () => {
   return (
     <>
-      <span className="relative">
+      <span className="animate__animated animate__fadeIn relative">
         <svg
           className="animate-spin h-5 w-5 text-white"
           xmlns="http://www.w3.org/2000/svg"

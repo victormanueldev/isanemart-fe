@@ -38,13 +38,16 @@ api.interceptors.response.use(
 
       return new Promise((resolve, reject) => {
         const payload = {
-          access_token: localStorage.getItem('refresh_token'),
+          refresh_token: localStorage.getItem('refresh_token'),
           enabled: true,
         };
         api
-          .post('/auth/refresh', payload)
+          .post('/auth/refresh', payload, {
+            headers: { Authorization: `Bearer ${payload.refresh_token}` },
+          })
           .then((response) => {
             localStorage.setItem('access_token', response?.data?.access_token || '');
+            localStorage.setItem('refresh_token', response?.data?.refresh_token || '');
             resolve(api(originalRequest));
           })
           .catch((err) => {
