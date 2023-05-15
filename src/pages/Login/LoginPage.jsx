@@ -1,13 +1,16 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { startLogin } from '../../state';
 import { ArrowRightIcon, ExclamationCircleIcon } from '@heroicons/react/24/solid';
 import { AuthLayout } from '../../layouts';
-import { LoaderButton, Toast } from '../../components';
+import { LoaderButton } from '../../components';
 
 export const LoginPage = () => {
-  const { status, error } = useSelector((state) => state.auth);
+  const { status } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,9 +19,11 @@ export const LoginPage = () => {
   const onSubmit = (data) => {
     dispatch(startLogin(data));
   };
+  useEffect(() => {
+    if (status === 'authenticated') navigate('/admin/planning/calendar');
+  }, [status]);
   return (
     <AuthLayout>
-      {!error ?? <Toast></Toast>}
       <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">Iniciar Sesión</h1>
       <form className="mt-8" onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-y-7">
@@ -101,14 +106,15 @@ export const LoginPage = () => {
           <button
             type="submit"
             className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800 disabled:pointer-events-none"
+            disabled={status == 'checking' ?? true}
           >
-            {!status == 'checking' ? (
+            {status == 'checking' ? (
+              <LoaderButton></LoaderButton>
+            ) : (
               <>
                 Iniciar Sesión
                 <ArrowRightIcon className="h-4 w-4" />
               </>
-            ) : (
-              <LoaderButton></LoaderButton>
             )}
           </button>
         </div>

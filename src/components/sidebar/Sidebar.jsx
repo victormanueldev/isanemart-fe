@@ -1,8 +1,10 @@
 import { Bars3Icon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { useMemo } from 'react';
 import { appRoutes } from '../../routes';
 import { SidebarItem } from './SidebarItem';
 
 export const Sidebar = () => {
+  const routes = useMemo(() => appRoutes, []);
   return (
     <>
       {/* Mobile Style */}
@@ -57,14 +59,14 @@ export const Sidebar = () => {
           data-hs-accordion-always-open
         >
           <ul className="space-y-1.5">
-            {appRoutes.map((routes, index) => (
+            {routes.map((route, index) => (
               <SidebarItem
                 key={index}
-                isParent={routes.isParent}
-                parentName={routes.parent}
-                iconComponent={routes.iconComponent}
-                childrenRoutes={routes.children}
-                pathname={routes.pathname}
+                isParent={route.isParent}
+                parentName={route.parent}
+                iconComponent={route.iconComponent}
+                childrenRoutes={route.children}
+                pathname={route.pathname}
               ></SidebarItem>
             ))}
           </ul>

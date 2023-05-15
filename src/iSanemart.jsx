@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { AppRouter } from './routes';
 import { Provider } from 'react-redux';
 import { store } from './state';
+import { Toast } from './components';
 
 export const ISanemart = () => {
   useEffect(() => {
@@ -13,6 +14,7 @@ export const ISanemart = () => {
     <Provider store={store}>
       <BrowserRouter>
         <AppRouter></AppRouter>
+        <Toast />
       </BrowserRouter>
     </Provider>
   );

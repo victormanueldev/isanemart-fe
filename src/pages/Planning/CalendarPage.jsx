@@ -51,7 +51,6 @@ export const CalendarPage = () => {
                     type="checkbox"
                     className="shrink-0 mt-0.5 border-gray-200 rounded text-indigo-600 focus:ring-indigo-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-indigo-500 dark:checked:border-indigo-500 dark:focus:ring-offset-gray-800"
                     id="hs-checkbox-group-1"
-                    checked={true}
                   ></input>
                   <label
                     htmlFor="hs-checkbox-group-1"
@@ -65,7 +64,6 @@ export const CalendarPage = () => {
                     type="checkbox"
                     className="shrink-0 mt-0.5 border-gray-200 rounded text-red-600 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-red-500 dark:checked:border-red-500 dark:focus:ring-offset-gray-800"
                     id="hs-checkbox-group-1"
-                    checked={true}
                   ></input>
                   <label
                     htmlFor="hs-checkbox-group-1"
