@@ -6,7 +6,6 @@ import { AuthLayout } from '../../layouts';
 import { LoaderButton, Toast } from '../../components';
 
 export const LoginPage = () => {
-  console.log('rendered');
   const { status, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const {

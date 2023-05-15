@@ -23,7 +23,6 @@ const events = [
 ];
 
 export const CalendarPage = () => {
-  console.log('rendered');
   const { onEvents, onEventClick, onDateSelect, renderEventContent } = useCalendar();
 
   return (

@@ -27,8 +27,7 @@ export const authSlice = createSlice({
       state.isSuperuser = payload.is_superuser;
       state.color = payload.color;
       // Generate Initials
-
-      state.initials = payload.initials;
+      state.initials = null;
     },
     logout: (state, { payload }) => {
       state.status = 'not-authtenticated';

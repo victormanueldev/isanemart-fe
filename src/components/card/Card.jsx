@@ -1,6 +1,5 @@
 import { EllipsisVerticalIcon } from '@heroicons/react/24/solid';
 export const Card = ({ title, children }) => {
-  console.log('rendered');
   return (
     <div className="flex flex-col bg-white border shadow-sm rounded-md dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
       <div className="flex items-center justify-between bg-gray-100 border-b rounded-t-md py-3 px-4 md:py-3 md:px-4 dark:bg-gray-800 dark:border-gray-700">
