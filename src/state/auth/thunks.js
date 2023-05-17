@@ -34,6 +34,7 @@ export const startUserMe = () => {
       const result = await fetchUserMe();
       dispatch(login(result.data));
     } catch (error) {
+      console.log(error);
       dispatch(logout(error.response.data));
     }
   };

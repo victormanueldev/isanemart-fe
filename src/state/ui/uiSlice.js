@@ -8,6 +8,7 @@ export const uiSlice = createSlice({
     toastBgColor: null,
     toastMessage: null,
     autoHideTimeout: null,
+    isModalOpen: false,
   },
   reducers: {
     closeToast: (state /* action */) => {
@@ -22,7 +23,10 @@ export const uiSlice = createSlice({
       state.toastMessage = payload.message;
       state.autoHideTimeout = payload.autoHide;
     },
+    toggleModal: (state) => {
+      state.isModalOpen = !state.isModalOpen;
+    },
   },
 });
 
-export const { closeToast, showToast } = uiSlice.actions;
+export const { closeToast, showToast, toggleModal } = uiSlice.actions;

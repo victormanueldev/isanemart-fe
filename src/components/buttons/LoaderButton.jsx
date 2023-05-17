@@ -1,7 +1,7 @@
 export const LoaderButton = () => {
   return (
-    <>
-      <span className="animate__animated animate__fadeIn relative">
+    <div className="flex flex-row gap-x-2 animate__animated animate__fadeIn animate__faster">
+      <span className="relative">
         <svg
           className="animate-spin h-5 w-5 text-white"
           xmlns="http://www.w3.org/2000/svg"
@@ -24,6 +24,6 @@ export const LoaderButton = () => {
         </svg>
       </span>
       Procesando...
-    </>
+    </div>
   );
 };

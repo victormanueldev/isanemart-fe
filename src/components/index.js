@@ -7,3 +7,5 @@ export * from './accordion/AccordionGroup';
 export * from './accordion/AccordionTitle';
 export * from './card/Card';
 export * from './buttons/LoaderButton';
+export * from './modal/BaseModal';
+export * from './skeletons/SimpleSkeleton';

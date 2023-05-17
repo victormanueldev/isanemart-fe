@@ -3,8 +3,7 @@ import { useState } from 'react';
 export const useCalendar = () => {
   const [events, setEvents] = useState([]);
 
-  const onDateSelect = (selectInfo) => {
-    let title = prompt('Please enter a new title for your event');
+  const onSelect = (selectInfo, title) => {
     let calendarApi = selectInfo.view.calendar;
 
     calendarApi.unselect(); // clear date selection
@@ -40,7 +39,7 @@ export const useCalendar = () => {
   };
 
   return {
-    onDateSelect,
+    onSelect,
     onEventClick,
     onEvents,
     renderEventContent,

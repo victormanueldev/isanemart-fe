@@ -1,6 +1,6 @@
 export const Accordion = ({ title, active, style, index, children }) => {
   return (
-    <div className={`${active && 'active'} ${style}`} id={`hs-bordered-heading-${index}`}>
+    <div className={`${active ? 'active' : ''} ${style}`} id={`hs-bordered-heading-${index}`}>
       {title}
       <div
         id={`hs-basic-bordered-collapse-${index}`}

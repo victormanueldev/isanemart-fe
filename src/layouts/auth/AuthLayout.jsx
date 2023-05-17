@@ -7,7 +7,7 @@ export const AuthLayout = ({ children }) => {
             <div className="xs:w-0 sm:w-0 md:w-[349px]">
               <img
                 className="h-full rounded-l-lg"
-                src="https://plus.unsplash.com/premium_photo-1681426452748-2aad018a084d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                src="https://images.unsplash.com/photo-1663544093468-034ff949fcdd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=663&q=80"
                 srcSet=""
               />
             </div>

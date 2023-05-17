@@ -1,4 +1,4 @@
-import { showToast, closeToast } from './uiSlice';
+import { showToast, closeToast, toggleModal } from './uiSlice';
 
 export const startShowToast = ({ message, type, bgColor }) => {
   return (dispatch) => {
@@ -9,5 +9,11 @@ export const startShowToast = ({ message, type, bgColor }) => {
 export const startCloseToast = () => {
   return (dispatch) => {
     dispatch(closeToast());
+  };
+};
+
+export const handleToggleModal = () => {
+  return (dispatch) => {
+    dispatch(toggleModal());
   };
 };
