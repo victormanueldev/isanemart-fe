@@ -9,3 +9,5 @@ export * from './card/Card';
 export * from './buttons/LoaderButton';
 export * from './modal/BaseModal';
 export * from './skeletons/SimpleSkeleton';
+export * from './pagination/Pagination';
+export * from './table/Table';

@@ -1,20 +1,24 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { CalendarPage, LoginPage, ServicesList, NotFound } from '../pages';
+import { Routes, Route } from 'react-router-dom';
+import {
+  CalendarPage,
+  LoginPage,
+  ServicesList,
+  NotFound,
+  CustomerList,
+  CustomerCreate,
+} from '../pages';
 import { startUserMe } from '../state';
 
 const RequireAuth = ({ children }) => {
   const { isAuthenticated } = useSelector((state) => state.auth);
-  let location = useLocation();
-  if (!isAuthenticated) {
-    // Redirect them to the /login page, but save the current location they were
-    // trying to go to when they were redirected. This allows us to send them
-    // along to that page after they login, which is a nicer user experience
-    // than dropping them off on the home page.
-    return <Navigate to="/auth/login" state={{ from: location }} replace />;
-  }
-  return children;
+  if (isAuthenticated) return children;
+  // Redirect them to the /login page, but save the current location they were
+  // trying to go to when they were redirected. This allows us to send them
+  // along to that page after they login, which is a nicer user experience
+  // than dropping them off on the home page.
+  // return <Navigate to="/auth/login" state={{ from: location }} replace />;
 };
 
 export const AppRouter = () => {
@@ -39,6 +43,22 @@ export const AppRouter = () => {
         element={
           <RequireAuth>
             <ServicesList />
+          </RequireAuth>
+        }
+      ></Route>
+      <Route
+        path="/admin/crm/customers"
+        element={
+          <RequireAuth>
+            <CustomerList />
+          </RequireAuth>
+        }
+      ></Route>
+      <Route
+        path="/admin/crm/create"
+        element={
+          <RequireAuth>
+            <CustomerCreate />
           </RequireAuth>
         }
       ></Route>
