@@ -6,3 +6,4 @@ export * from './Services/ServicesList';
 export * from './Services/ServicesDetail';
 export * from './Customers/CustomersList';
 export * from './Customers/CustomerCreate';
+export * from './Headquarters/HeadquartersList';

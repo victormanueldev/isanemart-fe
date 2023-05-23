@@ -8,6 +8,7 @@ import {
   NotFound,
   CustomerList,
   CustomerCreate,
+  HeadquartersList,
 } from '../pages';
 import { startUserMe } from '../state';
 
@@ -59,6 +60,14 @@ export const AppRouter = () => {
         element={
           <RequireAuth>
             <CustomerCreate />
+          </RequireAuth>
+        }
+      ></Route>
+      <Route
+        path="/admin/crm/headquarters"
+        element={
+          <RequireAuth>
+            <HeadquartersList />
           </RequireAuth>
         }
       ></Route>

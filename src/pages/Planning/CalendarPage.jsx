@@ -1,12 +1,13 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
-import { Bars2Icon } from '@heroicons/react/24/solid';
+import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import { AdminLayout } from '../../layouts';
-import { CreateServiceForm } from '../../views';
+import { CreateServiceForm, UnnassignedServiceForm } from '../../views';
 import { BaseModal, SimpleSkeleton, Card } from '../../components';
 import { useCalendar } from '../../hooks';
 import { handleToggleModal } from '../../state';
@@ -28,11 +29,19 @@ const events = [
 export const CalendarPage = () => {
   const dispatch = useDispatch();
   const loading = false;
+  const [serviceModal, setServiceModal] = useState(null);
   const { onEvents, onEventClick, onSelect, renderEventContent } = useCalendar();
 
   const onDateSelect = (selectInfo) => {
+    setServiceModal('createService');
     dispatch(handleToggleModal());
     onSelect(selectInfo);
+  };
+
+  const onUnnassignedService = (serviceInfo) => {
+    setServiceModal('unnassignedService');
+    dispatch(handleToggleModal());
+    // dispatch service selected
   };
 
   return (
@@ -95,7 +104,10 @@ export const CalendarPage = () => {
                   Servicios pendientes por asignación de horario y técnico
                 </p>
                 <div className="flex flex-col gap-y-3">
-                  <div className="cursor-grabbing flex flex-row bg-white border shadow-sm rounded-lg xs:p-3 md:p-2 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] dark:text-gray-400 w-full justify-between items-center">
+                  <div
+                    className="cursor-pointer flex flex-row bg-white border shadow-sm rounded-lg xs:p-3 md:p-2 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] dark:text-gray-400 w-full justify-between items-center"
+                    onClick={(e) => onUnnassignedService(e)}
+                  >
                     <span className="inline-flex items-center justify-center h-9 w-9 rounded-full bg-gray-600">
                       <span className="text-xs font-medium text-white leading-none">AC</span>
                     </span>
@@ -104,10 +116,10 @@ export const CalendarPage = () => {
                       <p className="text-sm text-gray-500">Av 5 # 35 F Sur - 126</p>
                     </div>
                     <div className="basis-1/7">
-                      <Bars2Icon className="w-5 h-5"></Bars2Icon>
+                      <ChevronRightIcon className="w-5 h-5"></ChevronRightIcon>
                     </div>
                   </div>
-                  <div className="cursor-grabbing flex flex-row bg-white border shadow-sm rounded-lg xs:p-3 md:p-2 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] dark:text-gray-400 w-full justify-between items-center">
+                  <div className="cursor-pointer flex flex-row bg-white border shadow-sm rounded-lg xs:p-3 md:p-2 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] dark:text-gray-400 w-full justify-between items-center">
                     <span className="inline-flex items-center justify-center h-9 w-9 rounded-full bg-gray-600">
                       <span className="text-xs font-medium text-white leading-none">AC</span>
                     </span>
@@ -116,10 +128,10 @@ export const CalendarPage = () => {
                       <p className="text-sm text-gray-500">Av 5 # 35 F Sur - 126</p>
                     </div>
                     <div className="basis-1/7">
-                      <Bars2Icon className="w-5 h-5"></Bars2Icon>
+                      <ChevronRightIcon className="w-5 h-5"></ChevronRightIcon>
                     </div>
                   </div>
-                  <div className="cursor-grabbing flex flex-row bg-white border shadow-sm rounded-lg xs:p-3 md:p-2 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] dark:text-gray-400 w-full justify-between items-center">
+                  <div className="cursor-pointer flex flex-row bg-white border shadow-sm rounded-lg xs:p-3 md:p-2 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] dark:text-gray-400 w-full justify-between items-center">
                     <span className="inline-flex items-center justify-center h-9 w-9 rounded-full bg-gray-600">
                       <span className="text-xs font-medium text-white leading-none">AC</span>
                     </span>
@@ -128,7 +140,7 @@ export const CalendarPage = () => {
                       <p className="text-sm text-gray-500">Av 5 # 35 F Sur - 126</p>
                     </div>
                     <div className="basis-1/7">
-                      <Bars2Icon className="w-5 h-5"></Bars2Icon>
+                      <ChevronRightIcon className="w-5 h-5"></ChevronRightIcon>
                     </div>
                   </div>
                 </div>
@@ -163,7 +175,11 @@ export const CalendarPage = () => {
         </div>
       </div>
       <BaseModal>
-        <CreateServiceForm></CreateServiceForm>
+        {serviceModal === 'unnassignedService' ? (
+          <UnnassignedServiceForm></UnnassignedServiceForm>
+        ) : (
+          <CreateServiceForm></CreateServiceForm>
+        )}
       </BaseModal>
     </AdminLayout>
   );

@@ -34,6 +34,10 @@ export const appRoutes = [
         pathname: '/admin/crm/create',
         name: 'Crear Cliente',
       },
+      {
+        pathname: '/admin/crm/headquarters',
+        name: 'Sedes',
+      },
     ],
   },
 ];

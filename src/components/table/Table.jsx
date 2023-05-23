@@ -1,3 +1,5 @@
+import { flattenObject } from '../../utils';
+
 export const Table = ({
   selectable = false,
   headers = [],
@@ -63,7 +65,7 @@ export const Table = ({
                 key={`${prop}-${index}-${idx_prop}`}
                 className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200"
               >
-                {element[prop]}
+                {flattenObject(element)[prop]}
               </td>
             ))}
             <td className="flex flex-row justify-between px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
