@@ -4,3 +4,7 @@ export * from './ui';
 export * from './customers';
 export * from './services';
 export * from './headquarters';
+export * from './users';
+export * from './treatments';
+export * from './areas';
+export * from './documents';

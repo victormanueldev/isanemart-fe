@@ -1,6 +1,7 @@
 import { setCustomer, setCustomers, setLoading } from './customersSlice';
 import { fetchCustomers, createCustomer, fetchCustomerById } from '../../services';
 import { closeToast, showToast } from '../ui';
+import { setServices } from '../services';
 
 export const startFetchingCustomers = () => {
   return async (dispatch) => {
@@ -26,12 +27,13 @@ export const startFetchingCustomers = () => {
   };
 };
 
-export const startFetchingCustomerById = ({ id }) => {
+export const startFetchingCustomerById = (id) => {
   return async (dispatch) => {
     dispatch(toggleLoading());
     try {
       const result = await fetchCustomerById(id);
-      dispatch(setCustomers(result.data));
+      dispatch(setCustomer(result.data));
+      dispatch(setServices(result.data.services));
     } catch (error) {
       dispatch(toggleLoading());
       const message = error.response ? error.response.data.detail : error.message;

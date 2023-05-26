@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { flattenObject } from '../../utils';
 
 export const Table = ({
@@ -63,16 +64,40 @@ export const Table = ({
             {props.map((prop, idx_prop) => (
               <td
                 key={`${prop}-${index}-${idx_prop}`}
-                className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200"
+                className="px-5 py-3 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200"
               >
-                {flattenObject(element)[prop]}
+                {prop === 'status' ? (
+                  <span className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
+                    {flattenObject(element)[prop]}
+                  </span>
+                ) : (
+                  <>{flattenObject(element)[prop]}</>
+                )}
               </td>
             ))}
             <td className="flex flex-row justify-between px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
               {actions.map((action, index) => (
-                <a key={index} className="text-blue-500 hover:text-blue-700" href="#">
-                  {action}
-                </a>
+                <div key={index}>
+                  {element?.url ? (
+                    <a
+                      key={index}
+                      className="text-blue-500 hover:text-blue-700"
+                      href={`${element.url}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {action.name}
+                    </a>
+                  ) : (
+                    <Link
+                      key={index}
+                      className="text-blue-500 hover:text-blue-700"
+                      to={`${action.pathname}${element.id}`}
+                    >
+                      {action.name}
+                    </Link>
+                  )}
+                </div>
               ))}
             </td>
           </tr>

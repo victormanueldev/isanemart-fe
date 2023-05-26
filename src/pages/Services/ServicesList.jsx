@@ -2,17 +2,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AdminLayout } from '../../layouts';
 import { startFetchServices } from '../../state';
 import { useEffect } from 'react';
-import { Pagination, SimpleSkeleton, Table, BaseModal } from '../../components';
+import { Pagination, SimpleSkeleton, Table } from '../../components';
 
-const headers = ['# orden', 'fecha prevista', 'cliente', 'técnico'];
-const props = ['id', 'expected_date', 'customer.commercial_name', 'users.0.full_name'];
-const actions = ['Editar', 'Borrar'];
+const headers = ['# orden', 'fecha prevista', 'cliente', 'sede', 'técnico', 'estado'];
+const props = [
+  'id',
+  'expected_date',
+  'customer.commercial_name',
+  'headquarter.name',
+  'users.0.full_name',
+  'status',
+];
+const actions = [{ name: 'Ver', pathname: '/admin/planning/service/' }];
 
 export const ServicesList = () => {
   const dispatch = useDispatch();
   const { isLoading, services } = useSelector((state) => state.services);
   useEffect(() => {
-    dispatch(startFetchServices());
+    dispatch(startFetchServices({}));
   }, []);
 
   return (

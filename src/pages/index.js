@@ -7,3 +7,4 @@ export * from './Services/ServicesDetail';
 export * from './Customers/CustomersList';
 export * from './Customers/CustomerCreate';
 export * from './Headquarters/HeadquartersList';
+export * from './Documents/DocumentsList';

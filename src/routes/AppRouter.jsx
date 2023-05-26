@@ -9,6 +9,8 @@ import {
   CustomerList,
   CustomerCreate,
   HeadquartersList,
+  ServicesDetail,
+  DocumentsList,
 } from '../pages';
 import { startUserMe } from '../state';
 
@@ -48,6 +50,14 @@ export const AppRouter = () => {
         }
       ></Route>
       <Route
+        path="/admin/planning/service/:id"
+        element={
+          <RequireAuth>
+            <ServicesDetail />
+          </RequireAuth>
+        }
+      ></Route>
+      <Route
         path="/admin/crm/customers"
         element={
           <RequireAuth>
@@ -68,6 +78,14 @@ export const AppRouter = () => {
         element={
           <RequireAuth>
             <HeadquartersList />
+          </RequireAuth>
+        }
+      ></Route>{' '}
+      <Route
+        path="/admin/documentos"
+        element={
+          <RequireAuth>
+            <DocumentsList />
           </RequireAuth>
         }
       ></Route>

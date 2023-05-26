@@ -6,7 +6,10 @@ import { startFetchingHeadquarters } from '../../state/headquarters';
 
 const headers = ['nombre', 'dirección', 'municipio', 'barrio', 'contacto', 'cliente'];
 const props = ['name', 'address', 'city', 'neighborhood', 'phone', 'customer.commercial_name'];
-const actions = ['Editar', 'Borrar'];
+const actions = [
+  { name: 'Editar', pathname: '' },
+  { name: 'Borrar', pathname: '' },
+];
 
 export const HeadquartersList = () => {
   const dispatch = useDispatch();

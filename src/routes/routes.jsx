@@ -1,4 +1,9 @@
-import { HomeIcon, CalendarDaysIcon, UserGroupIcon } from '@heroicons/react/24/outline';
+import {
+  HomeIcon,
+  CalendarDaysIcon,
+  UserGroupIcon,
+  NewspaperIcon,
+} from '@heroicons/react/24/outline';
 export const appRoutes = [
   // {
   //   isParent: false,
@@ -13,7 +18,7 @@ export const appRoutes = [
     children: [
       {
         pathname: '/admin/planning/calendar',
-        name: 'Calendar',
+        name: 'Calendario',
       },
       {
         pathname: '/admin/planning/services',
@@ -37,6 +42,17 @@ export const appRoutes = [
       {
         pathname: '/admin/crm/headquarters',
         name: 'Sedes',
+      },
+    ],
+  },
+  {
+    isParent: true,
+    parent: 'Documentos',
+    iconComponent: <NewspaperIcon className="w-3.5 h-3.5"></NewspaperIcon>,
+    children: [
+      {
+        pathname: '/admin/documentos',
+        name: 'Documentos',
       },
     ],
   },

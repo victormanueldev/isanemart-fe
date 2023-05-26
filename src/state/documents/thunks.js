@@ -1,15 +1,14 @@
+import { createDocument, fetchDocuments } from '../../services';
 import { closeToast, showToast } from '../ui';
-import { fetchHeadquarterById, fetchHeadquarters } from '../../services';
-import { setHeadquarter, setHeadquarters, setLoading } from './headquartersSlice';
+import { setDocument, setDocuments, setLoading } from './documentsSlice';
 
-export const startFetchingHeadquarters = () => {
+export const startFetchingDocuments = (params) => {
   return async (dispatch) => {
-    dispatch(toggleLoading());
+    dispatch(setLoading());
     try {
-      const result = await fetchHeadquarters();
-      dispatch(setHeadquarters(result.data));
+      const result = await fetchDocuments(params);
+      dispatch(setDocuments(result.data));
     } catch (error) {
-      dispatch(toggleLoading());
       const message = error.response ? error.response.data.detail : error.message;
       const autoHideTimeoutId = setTimeout(() => {
         dispatch(closeToast());
@@ -26,14 +25,14 @@ export const startFetchingHeadquarters = () => {
   };
 };
 
-export const startFetchinHeadquarterById = (id) => {
+export const startCreatingDocument = (payload) => {
   return async (dispatch) => {
     dispatch(setLoading());
     try {
-      const result = await fetchHeadquarterById(id);
-      dispatch(setHeadquarter(result.data));
+      const result = await createDocument(payload);
+      dispatch(setDocument(result.data));
+      dispatch(startFetchingDocuments({}));
     } catch (error) {
-      dispatch(toggleLoading());
       const message = error.response ? error.response.data.detail : error.message;
       const autoHideTimeoutId = setTimeout(() => {
         dispatch(closeToast());

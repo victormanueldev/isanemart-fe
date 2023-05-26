@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 export const parseCustomerHeadquarterData = (data, headquarters) => {
   if (headquarters === 'various')
     return {
@@ -43,4 +45,10 @@ export const flattenObject = (ob) => {
     }
   }
   return result;
+};
+
+export const substractHours = (dateStr, hours) => {
+  const date = new Date(dateStr);
+  date.setHours(date.getHours() - hours);
+  return format(date, 'yyyy-MM-dd HH:mm:ssXXX');
 };

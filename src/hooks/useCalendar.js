@@ -29,19 +29,9 @@ export const useCalendar = () => {
     setEvents([...events, e]);
   };
 
-  const renderEventContent = (eventInfo) => {
-    return (
-      <>
-        <b>{eventInfo.timeText}</b>
-        <i>{eventInfo.event.title}</i>
-      </>
-    );
-  };
-
   return {
     onSelect,
     onEventClick,
     onEvents,
-    renderEventContent,
   };
 };

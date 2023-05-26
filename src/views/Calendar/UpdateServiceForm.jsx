@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { XMarkIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import { useDispatch, useSelector } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
@@ -9,19 +9,18 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { handleToggleModal, startUpdatingServiceById } from '../../state';
 import { LoaderButton } from '../../components';
 
-export const UnnassignedServiceForm = () => {
+export const UpdateServiceForm = () => {
   const dispatch = useDispatch();
-
-  const { service } = useSelector((state) => state.services);
-  const { users } = useSelector((state) => state.users);
-  const { treatments } = useSelector((state) => state.treatments);
-
   const {
     control,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const { service } = useSelector((state) => state.services);
+  const { users } = useSelector((state) => state.users);
+  const { treatments } = useSelector((state) => state.treatments);
 
   const onCloseModal = () => {
     dispatch(handleToggleModal());
@@ -33,7 +32,6 @@ export const UnnassignedServiceForm = () => {
       user_id: parseInt(data.user),
       treatments: data.treatments.map((t) => parseInt(t)),
       observations: data.observations,
-      status: 'Agendado',
     };
     dispatch(startUpdatingServiceById(service.id, serviceData));
   };
@@ -144,6 +142,11 @@ export const UnnassignedServiceForm = () => {
                   />
                 )}
               />
+              {!!errors.expected_date && (
+                <p className="text-xs text-red-600 mt-2" id="expected-date-error">
+                  Este campo es requerido
+                </p>
+              )}
             </div>
             {/* Tecnicos */}
             <div className="col-span-1">
@@ -255,14 +258,14 @@ export const UnnassignedServiceForm = () => {
             className="hs-dropdown-toggle py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
             onClick={onCloseModal}
           >
-            Close
+            Cerrar
           </button>
           <button
             type="submit"
             className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
             onClick={() => setStatus(!status)}
           >
-            {status ? <LoaderButton /> : <>Save changes</>}
+            {status ? <LoaderButton /> : <>Guardar</>}
           </button>
         </div>
       </form>
