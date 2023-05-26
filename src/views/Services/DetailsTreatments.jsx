@@ -11,22 +11,23 @@ export const ServiceDetailTreatmentsInfo = ({ treatments }) => {
                 title={
                   <AccordionTitle
                     style="hs-accordion-toggle hs-accordion-active:text-blue-600 bg-gray-100 inline-flex justify-between items-center gap-x-3 w-full font-medium text-sm text-left text-gray-800 transition py-3 px-4 hover:text-gray-500 dark:hs-accordion-active:text-blue-500 dark:text-gray-200 dark:hover:text-gray-400"
-                    title={
-                      <>
-                        <div className="flex flex-row items-center gap-x-3">
-                          {treatment?.name}
-                          {treatment?.status === 'No iniciado' ? (
-                            <span className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-gray-200 text-gray-800">
-                              {treatment?.status}
-                            </span>
-                          ) : (
-                            <span className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                              {treatment?.status}
-                            </span>
-                          )}
-                        </div>
-                      </>
-                    }
+                    // title={
+                    //   // <>
+                    //   //   <div className="flex flex-row items-center gap-x-3">
+                    //   //     {treatment?.name}
+                    //   //     {treatment?.status === 'No iniciado' ? (
+                    //   //       <span className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-gray-200 text-gray-800">
+                    //   //         {treatment?.status}
+                    //   //       </span>
+                    //   //     ) : (
+                    //   //       <span className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    //   //         {treatment?.status}
+                    //   //       </span>
+                    //   //     )}
+                    //   //   </div>
+                    //   // </>
+                    // }
+                    title={treatment?.name}
                     index={treatment?.id}
                   />
                 }

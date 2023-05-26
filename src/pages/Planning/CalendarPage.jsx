@@ -87,7 +87,7 @@ export const CalendarPage = () => {
                     <div key={index} className="flex">
                       <input
                         type="checkbox"
-                        className={`shrink-0 mt-0.5 border-gray-200 rounded text-${user.color}-600 focus:ring-${user.color}-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-${user.color}-500 dark:checked:border-${user.color}-500 dark:focus:ring-offset-gray-800`}
+                        className={`shrink-0 mt-0.5 border-gray-200 rounded text-${user.color}-600 focus:ring-${user.color}-500 dark:bg-gray-800 dark:border-gray-700 checked:bg-${user.color}-500 checked:border-${user.color}-500 dark:focus:ring-offset-gray-800`}
                         id={`hs-checkbox-group-${user.id}`}
                         name={`checkbox-${user.id}`}
                         checked={checked[index]}
@@ -112,9 +112,7 @@ export const CalendarPage = () => {
               </div>
             ) : (
               <>
-                <p className="text-md text-gray-500 mb-3">
-                  Servicios pendientes por asignación de horario y técnico
-                </p>
+                <p className="text-md text-gray-500 mb-3">Servicios agendados</p>
                 <div className="flex flex-col gap-3">
                   {servicesState.unassignedServices.map((service, index) => (
                     <div
